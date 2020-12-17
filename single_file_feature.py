@@ -4,6 +4,7 @@ from pathlib import Path
 from vad_mfcc import extract_coef
 
 database_path = Path("/Users/thaipham/Desktop/weekly_project/Depression_Detection_Using_DNN/Depression_Detection_DNN/DATA")
+
 for wav_file in database_path.glob("*.wav"):
   # Extract the .wav filename   
   wav_file = wav_file.stem

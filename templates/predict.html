@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <h1 class="display-4">Welcome to ML Class! :)</h1>
+    <p class="lead"> Demo Detecting Depression from Speech</p>
+
+
+    <div class="col-lg-8 offset-lg-2">
+        <div class="card">
+            <div class="card-body">
+                <form action="/upload" method="POST" enctype="multipart/form-data">
+                    <label for="video-file">Select an audio file</label>
+                    <input type="file" class="form-control-file" id="video-file" name="file">
+                    <button type="submit" class="btn btn-md btn-danger">Submit</button>
+                </form>
+
+                <audio controls>
+                    <source src="{{ url_for('static',filename=fname) }}" type="audio/wav">
+                    Your browser doesn't support the audio element.
+                </audio>
+
+                <br>
+                {% for key, value in result.items() %}
+                    <h3>Audio file name: {{key}}</h3>
+                    <h3>Prediction: The person in the audio file is {{value[0]}}</h3>
+                {% endfor %}
+
+                <button type="button" class="btn btn-secondary">Go Back</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
